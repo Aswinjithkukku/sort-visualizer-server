@@ -274,6 +274,25 @@ module.exports = {
       }
    },
 
+   getSortDataAdmin: async (req, res) => {
+      try{
+         const { id } =req.params
+         if(!isValidObjectId(id)) {
+            return sendErrorResponse(res, 400, "Invalid Working Code Id!");
+         }
+
+         const sort = await Sort.findById(id)
+
+         res.status(200).json({
+            message: "success",
+            sort,
+         });
+      }catch(err){
+         sendErrorResponse(res, 500, err);
+         console.log(err);
+      }
+   },
+
    // client side code
    getSortsMain: async (req, res) => {
       try {
@@ -316,4 +335,6 @@ module.exports = {
          console.log(err);
       }
    },
+
 };
+

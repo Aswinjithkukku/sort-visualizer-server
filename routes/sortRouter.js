@@ -16,6 +16,7 @@ const {
    deleteWorking,
    getSortsMain,
    getSingleSort,
+   getSortDataAdmin,
 } = require("../controllers/sortController");
 const userAuth = require("../middlewares/userAuth");
 
@@ -60,6 +61,8 @@ router.delete("/admin/optimisedcode/:id/delete", deleteOptimisedSortBaseCode);
 router.post("/admin/addworking", upload.single("image"), addWorking);
 router.get("/admin/working/:sortid", getWorking);
 router.delete("/admin/working/:id/delete", deleteWorking);
+router.get("/admin/sort/:id", getSortDataAdmin);
+
 // client routes
 router.get("/getsort", getSortsMain);
 router.get("/getsort/:sortid", getSingleSort);
