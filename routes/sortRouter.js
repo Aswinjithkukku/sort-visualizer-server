@@ -17,6 +17,8 @@ const {
    getSortsMain,
    getSingleSort,
    getSortDataAdmin,
+   deleteSort,
+   editSortAlgorithm,
 } = require("../controllers/sortController");
 const userAuth = require("../middlewares/userAuth");
 
@@ -51,6 +53,7 @@ const upload = multer({
 });
 // admin routes
 router.post("/admin/creatsort", createNewSortAlgorithm);
+router.post("/admin/sort/:id/edit", editSortAlgorithm);
 router.post("/admin/addlanguage", createCodeSortingAlgorithm);
 router.post("/admin/addoptlanguage", createOptimisedCodeSortingAlgorithm);
 router.get("/admin/getsort", getSorts);
@@ -61,6 +64,7 @@ router.delete("/admin/optimisedcode/:id/delete", deleteOptimisedSortBaseCode);
 router.post("/admin/addworking", upload.single("image"), addWorking);
 router.get("/admin/working/:sortid", getWorking);
 router.delete("/admin/working/:id/delete", deleteWorking);
+router.delete("/admin/sort/:id/delete", deleteSort);
 router.get("/admin/sort/:id", getSortDataAdmin);
 
 // client routes
